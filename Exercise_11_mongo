@@ -1,0 +1,17 @@
+1)
+
+> db.bioinf_mongo_examen.find( { "method_of_admission": { $in: "TABLET, BUCCAL,SUBLINGUAL"}}, { name: 1 }).count()
+
+2)
+
+> db.bioinf_mongo_examen.find( { "percentage_of_side_effects": { $gt: 12 }}).count()
+12
+
+3)
+
+
+
+4)
+
+
+
