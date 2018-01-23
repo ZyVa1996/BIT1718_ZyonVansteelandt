@@ -1,0 +1,15 @@
+UNF 		LabTechnicians(member_id, member_name, date_of_birth, lab_code, lab_name,
+			research_code, research_description, research_supervisor)
+		
+1NF		LabTechnicians(member_id, member_name, date_of_birth, lab_code)
+			Labo(lab_code, lab_name, research_code, research_description, 
+			research_supervisor)
+
+2NF		LabTechnicians(member_id, member_name, date_of_birth, lab_code)
+			Labo(lab_code, lab_name, research_code)
+			Research(research_code, research_description, research_supervisor)
+
+3NF		LabTechnicians(member_id, member_name, date_of_birth, lab_code)
+			Labo(lab_code, lab_name, research_code)
+			Research(research_code, research_description, research_supervisor)
+
