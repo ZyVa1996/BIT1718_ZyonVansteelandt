@@ -1,0 +1,17 @@
+1)
+[guest@howest ExamDatabases]$ curl 'http://rest.ensembl.org/variation/mouse/rs4224828' -H 'Content-type:text/xml'
+<opt>
+  <data name="rs4224828" MAF="" ambiguity="Y" ancestral_allele="" minor_allele="" most_severe_consequence="3_prime_UTR_variant" source="Variants (including SNPs and indels) imported from dbSNP" var_class="SNP">
+    <evidence>Multiple_observations</evidence>
+    <evidence>Frequency</evidence>
+    <mappings allele_string="T/C" assembly_name="GRCm38" coord_system="chromosome" end="136443949" location="4:136443949-136443949" seq_region_name="4" start="136443949" strand="1" />
+  </data>
+</opt>
+
+
+2)
+[guest@howest ExamDatabases]$ curl 'http://rest.ensembl.org/sequence/region/mouse/2:0..99:1?type=genomic' -H 'Content-type:text/x-fasta'
+>chromosome:GRCm38:2:1:99:1
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+
