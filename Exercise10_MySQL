@@ -1,0 +1,54 @@
+1)
+mysql> select gene_name, (seq_region_end-seq_region_start + 1) as length from gene order by length limit 1;
++-----------+--------+
+| gene_name | length |
++-----------+--------+
+| TRDD1     |      8 |
++-----------+--------+
+1 row in set (0.03 sec)
+
+2)
+mysql> select gene_name, count(*) as number_of_transcripts from gene join transcript on gene.gene_id = transcript.gene_id group by gene_name order by count(*) desc limit 1;
++-----------+-----------------------+
+| gene_name | number_of_transcripts |
++-----------+-----------------------+
+| U6        |                  1329 |
++-----------+-----------------------+
+1 row in set (0.26 sec)
+
+3)
+mysql> select chromosome, count(*) as number_of_genes from gene where description like "%cancer%" group by chromosome order by count(*) desc limit 1 offs
++------------+-----------------+
+| chromosome | number_of_genes |
++------------+-----------------+
+| 9          |               5 |
++------------+-----------------+
+1 row in set (0.06 sec)
+mysql> select chromosome, count(*) as number_of_genes, count(*) as number_of_exons from gene join transcript on gene.gene_id = transcript.gene_id join exon_transcript on transcript.transcript_id = exon_transcript.transcript_id join exon on exon_transcript.exon_id = exon.exon_id where description like "%cancer%" group by chromosome order by count(*) desc limit 1 offset 1;
+ERROR 1052 (23000): Column 'description' in where clause is ambiguous
+
+4)
+mysql> select count(*) from exon;
++----------+
+| count(*) |
++----------+
+|   642590 |
++----------+
+1 row in set (4.06 sec)
+
+mysql> select count(*) from exon_transcript;
++----------+
+| count(*) |
++----------+
+|  1178393 |
++----------+
+1 row in set (1.15 sec)
+
+uitleg: Door het proces splicing zorgt ervoor dat de intronen uit het pre-mRNA worden geknipt
+zodat het mRNA kan gevormd worden met alleen de exonen. hierdoor kan het zijn dat sommige
+exonen meerdere transcripten zullen hebben. (per exon meerdere eindproducten)
+
+
+
+
+
